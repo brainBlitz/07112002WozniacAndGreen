@@ -1,6 +1,412 @@
 
+* {
+	margin: 0;
+	padding: 0;
+}
+header {
+	background-color: rgb(0,200,255);
+  	height: 65px;
+}
+
+.tools {
+	background-color: rgba(255,255,255,0.2);
+	width: 20.5vw;
+	height: 65px;
+	float: left;
+	display: flex;
+ 	justify-content: space-evenly;	
+}
 .siteName {
-  font: 400 100px/1.3 'Lobster Two', Helvetica, sans-serif;
-  color: #2b2b2b;
-  text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+  	font: 400 100px/1.3 'Lobster Two', Helvetica, sans-serif;
+ 	color: #2b2b2b;
+  	font-size: 50px;
+  	text-shadow: 1px 1px 0px #ededed, 4px 4px 0px rgba(0,0,0,0.15);#
+}
+
+#tagBar {
+	clear: both;
+	background-color: rgb(179,239,255); /*rgba(0,200,255,0.3)*/
+	float: left;
+  	width: 20.5vw;
+  	height: calc(100vh - 65px - 45px);
+  	overflow: scroll;
+}
+.tagContainer{
+	width: 18vw;
+	transition: all 0.25s ease-out;
+	margin-bottom: 4px;
+}
+.tag {
+	text-align: left;
+	margin-top: 1.5px;
+	margin-left: 5px;
+	border-top: 0px;
+	border-bottom: 0px;
+	border-right: 0px;
+	width: 18vw;
+	shape-outside: polygon(0 0, 88.9% 0, 100% 50%, 88.9% 100%, 0 100%);
+  	clip-path: polygon(0 0, 88.9% 0, 100% 50%, 88.9% 100%, 0 100%);
+  	
+}
+.normalTag {
+	border-left: 5px solid rgba(0,0,0,0.3);
+	transition: all 0.25s ease-out;
+}
+.editableTag {
+	border-left: 5px solid rgb(0,200,255);
+	min-height: 35px;
+}
+.normalTag:hover .tagContainer{
+	width: 19vw;
+}
+.normalTag:focus .tagContainer{
+	width: 19vw;
+}
+.normalTag:hover {
+	border-left: 5px solid rgba(0,0,0,0);
+	box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.2);
+	width: 19vw;
+}
+.selectedTag {
+	border-left: 5px solid rgb(0,200,255);
+	box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
+	width: 19vw;
+}
+.tagText {
+	float:left;
+	width: 12.5vw;
+	overflow-wrap: break-word;
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-right: none;
+	margin-bottom: 5px;
+	color: #101010;
+	font-family: helvetica;
+	font-style: bold;
+	font-size: 23px;
+	transition: all 0.25s ease-out;
+}
+
+.tagCount {
+	text-align: center;
+	float:left;
+	height: 30px;
+	width: calc(3.5vw - 15px);
+	margin-right: 5px;
+	margin-top: 3px;
+	font-family: helvetica;
+	font-style: bold;
+	font-size: 23px;
+}
+.tagCountNormal {
+	color: #2b2b2b;
+	background-color: rgba(0,0,0,0.1);
+	text-shadow: 1px 1px 0px rgb(0,200,255), 2px 2px 0px white;
+}
+.tagCountEditable {
+	display: inline-block;
+	color: white;
+	background-color: rgb(0,200,255);
+	margin-left: 2.5px;
+	margin-top: 2px;
+	
+}
+
+.selectedTagText{
+	color: white;
+	font-size: 25px;
+}
+.toolBox {
+	background-color: transparent;
+	border: 0px;	
+}
+.toolText {
+	text-shadow: 2px 5px 0px rgba(0,0,0,0.15);
+	transition: all 0.25s ease-out;	
+}
+.toolTextNormal {
+	color: white;
+}
+.toolTextSelected {
+	color: #2b2b2b;
+}
+.toolBox:hover .toolText {
+	color: #2b2b2b;
+	text-shadow: none;
+}
+.toolBox:focus {
+	outline: none;
+}
+.editRule {
+	color: #2b2b2b;
+	background-color: #2b2b2b;
+	margin-left: 5px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	height: 3px;
+	border: none;
+	width: 15vw;
+} 
+.extra {
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+.tagNameInput {
+	float:left;
+	display: inline-block;
+	margin-left: 10px;
+	width: 12.5vw;
+	height: 35px;
+	border: none;
+	color: #101010;
+	font-family: helvetica;
+	font-style: bold;
+	font-size: 23px;
+	background-color: rgba(0,0,0,0.1);
+	transition: all 0.25s ease-out;	
+}
+.tagNameInput:focus {
+	outline: none;
+	background-color: transparent;
+}
+
+.submitTag {
+	width: 60px;
+	text-align: center;
+	border: 3px solid rgb(0,200,255);;
+	margin-top: 5px;
+	margin-left: 5px;
+	font-size: 15px;
+	font-style: bold;
+	background-color:  #e6e6e6;
+	color: rgb(0,200,255);
+	font-family: josefin, sans-serif;
+	padding: 2px;
+	transition: all 0.25s ease-out;	
+	box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+}
+.submitTag:hover{
+	background-color: transparent;
+	font-size:15px;
+	width: calc(12.5vw + 15px);
+	color: #2b2b2b;
+
+}
+.submitTag:focus{
+	background-color: rgb(0,200,255);
+	outline: none;
+	width: 80px;
+	color: #2b2b2b;
+}
+.colorPicker {
+	vertical-align: bottom;
+	margin:none;
+	border:none;
+	padding: none;
+	background-color: transparent;
+	height: 30px;
+}
+.colorPicker:focus {
+	outline: none !important;
+	border-bottom: 5px solid rgb(0,200,255);
+}
+.tagTools {
+	float:left;
+	align-items: center;
+	display: flex;
+ 	justify-content: space-evenly;	
+	height: 40px;
+	background-color: rgb(70,70,70);
+	width: 20.5vw;
+	border-bottom: 5px solid rgb(179,239,255);
+}
+.searchNfilterBar {
+	margin-left: 5px;
+	margin-right: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: 13.5vw;
+	height: 30px;
+	border: none;
+	color: white;
+	font-family: helvetica;
+	font-style: bold;
+	font-size: 23px;
+	background-color: rgba(255,255,255,0.25);
+	transition: all 0.25s ease-out;	
+}
+.searchNfilterBar:focus {
+	outline: none;
+	background-color: #2b2b2b;
+}
+.filter {
+	width: calc(13.5vw + 10px);
+	font-size: 15px;
+	padding: none;
+}
+.backNforth {
+	font-size: 20px;
+	text-shadow: 0px 0px 8px rgba(0,0,0,0.8);
+	transition: all 0.25s ease-out;	
+}
+.tagToolBox {	
+	height: 40px;
+	background-color: transparent;
+	border: 0px;	
+}
+.backNforthNormal {
+	color: white;
+}
+.backNforthSelected{
+	color: rgb(0,200,255);
+}
+.tagToolBox:hover .backNforth {
+	color: rgb(0,200,255);
+}
+.tagToolBox:focus {
+	outline: none;
+}
+.bin {
+	font-size: 20px;
+	text-shadow: 2px 3px 0px rgba(0,0,0,0.15);
+	color: white;
+	transition: all 0.25s ease-out;	
+}
+.bin:hover {
+	text-shadow: none;
+	color: #2b2b2b;
+}
+.binSelected {
+	font-size: 20px;
+	text-shadow: 2px 3px 0px rgba(0,0,0,0.15);
+	color: #2b2b2b;
+}
+#deleteAlert {
+	border-radius: 17px;
+	z-index: 2;
+	position: absolute;
+	left: 21vw;
+	background-color: rgb(225,225,225);
+	width: 25vw;
+	height: auto;
+	shape-outside: polygon(100% 0, 10% 0, 0 50%, 10% 100%, 100% 100%);
+  	clip-path: polygon(100% 0, 10% 0, 0 50%, 10% 100%, 100% 100%);
+}
+#deleteAlertText {
+	text-align: center;
+	font-size: 15px;
+	font-family: verdana;
+	color: #2b2b2b;
+	margin: 10px;
+	margin-left: 10%;
+	margin-bottom: 15px;
+}
+#confirmVcancel {
+	align-items: center;
+	display: flex;
+ 	justify-content: space-evenly;	
+	height: 20px;
+	width: 22vw;
+	margin-left: 10%;
+	margin-bottom: 15px;
+}
+
+.confirmVcancelButton {
+	background-color: rgba(0,0,0,0.1);
+	border: none;
+	padding: 5px;
+	border-radius: 5px;
+	transition: all 0.25s ease-out;	
+}
+.confirmVcancelButton:hover {
+	background-color: rgba(0,0,0,0.3);
+}
+.confirmVcancelButton:focus {
+	outline: none;
+}
+.cancel {
+	text-align: center;
+	font-size: 17px;
+	font-family: verdana;
+	color: rgb(200,0,100);
+}
+.confirm {
+	text-align: center;
+	font-size: 17px;
+	font-family: verdana;
+	color: rgb(0,200,100);
+}
+.blockout {
+	z-index: 1;
+	position: absolute;
+	top:0px;
+	left:0px;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0,0,0,0.5); 
+}
+.selDot {
+	color: white;
+	font-size: 8px;
+	margin-left: 0.5vw;
+}
+.selDotHidden {
+	color: transparent;
+	font-size: 8px;
+	margin-left: 0.5vw;
+	margin-top: 15px;
+}
+
+#quoteFeedContainer {
+	text-align: center;
+	background-color: rgb(240,240,240);
+	width: 79.5vw;
+	height: calc(100vh - 105px);
+	margin-left: 20.5vw;
+	overflow: scroll;
+	padding-top: 40px;
+}
+.quoteBox {
+	display: inline-block;
+	width: 65vw;
+	height: auto;
+	background-color: white;
+	margin-bottom: 40px;
+	box-shadow: 0px 0px 30px rgba(0,0,0,0.2);
+	border-radius: 10px;
+}
+.author {
+	width: 65vw;
+	height: 25px;
+	background-color: rgb(0,210,245);
+	border-radius: 10px 10px 0px 0px;
+	text-align: left;
+}
+.authorText {
+	color: #2b2b2b;
+	display: inline-block;
+	font-family: verdana;
+	margin-left: 20px;
+	margin-top: 3px;
+	margin-bottom: 0px;
+}
+.quoteText {
+	width: 65vw;
+	height: auto;
+	text-align: left;
+}
+.metaQuoteText {
+	color: #2b2b2b;
+	height: auto;
+	display: inline-block;
+	font-family: Verdana;
+	font-size: 30px;
+	margin: 30px;
+}
+.quoteInput {
+
 }
